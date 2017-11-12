@@ -1,0 +1,53 @@
+package com.umg.cuentaws.ctrl;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Properties;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
+import org.apache.commons.dbutils.DbUtils;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+import com.umg.cuentaws.util.Util;
+
+public class ControladorBase {
+	private static final Logger log = Logger.getLogger(ControladorBase.class);
+	
+	protected Connection obtieneConexion() throws SQLException {
+		Connection conexion = null;
+		try {
+			conexion = obtenerDataSource(Util.JNDI_CUENTA).getConnection();
+		} catch (NamingException e) {
+			log.error(e.getMessage(), e);
+			throw new SQLException("Surgio un inconveniente con la conexión hacia base de datos. Recurso: JNDI_CUENTA");
+		}
+		return conexion;
+	}
+	
+	private DataSource obtenerDataSource(String jndi) throws NamingException {
+		Context contexto= new InitialContext();
+		DataSource ret = (DataSource)contexto.lookup(jndi);
+		return ret;
+	}
+	
+	protected void cerrarConexion(Connection conn){
+		if(conn != null){
+			DbUtils.closeQuietly(conn);
+		}
+	}
+	
+	protected void cargaPropiedades(String path) throws IOException {
+		Properties prop = new Properties();
+		InputStream in = this.getClass().getResourceAsStream("/com/umg/cuentaws/log4j.properties");
+		prop.load(in);
+//		prop.put("log4j.appender.F.File", path);
+		PropertyConfigurator.configure(prop);
+	}
+}

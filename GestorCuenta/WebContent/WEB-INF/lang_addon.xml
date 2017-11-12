@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<language-addon>
+    <addon-name>menucardaddon</addon-name>
+    <language-name>xul/html</language-name>
+    <component>
+        <component-name>menucard</component-name>
+        <component-class>com.umg.gt.gestorcuenta.util.Menucard</component-class>
+        <macro-uri>/comp/menucard.zul</macro-uri>
+    </component>
+</language-addon>

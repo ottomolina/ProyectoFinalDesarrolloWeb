@@ -1,0 +1,60 @@
+@CHARSET "ISO-8859-1";
+
+ .btn-personalized{
+ 	
+    text-decoration: none;
+    padding: 4px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #00a3f0;
+    background: transparent;
+    border-radius: 6px;
+    border: 1px solid #00a3f0;
+    user-select: none; 
+  }
+  .btn-personalized:hover{
+    color: #03226b;
+    background: transparent;
+    border: 1px solid #03226b;
+    user-select: none; 
+  }
+
+.btn{
+	border: solid;
+	border-color: #00a3f0;
+	border-width: 0.5px;
+	height: 25px;
+}
+
+.wdw, .wdw>.z-window-header, .z-messagebox-window, .z-messagebox-window>.z-window-header{
+	border: bold;
+/* 	background-color:#135bac; */
+	background-color:rgba(1, 8, 130,1);
+	color: #ffffff;
+	font-size: 20pt;
+	font-weight: bold;
+	text-align: center;
+}
+
+.wdw>.z-window-content, .z-messagebox-window>.z-window-header{
+	color:black;
+}
+
+.z-label{
+	color: black;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.z-textbox, .z-bandbox-input, .z-combobox-input, .z-decimalbox {
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+}
+
+.z-window, .z-window-header {
+	background-color: #02047A;
+	color: white;
+	font-size: 14pt;
+	font-family: sans-serif;
+}

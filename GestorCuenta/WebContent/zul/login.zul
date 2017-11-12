@@ -1,0 +1,43 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="native">
+	<window title="" border="none" width="100%" height="100%" apply="com.umg.gt.gestorcuenta.controller.LoginCtrl">
+		<borderlayout width="100%" height="100%">
+			<center border="none" style="background: url('img/fondos/degradado.png'); background-size:100% 100%;">
+				
+			</center>
+		</borderlayout>
+	
+	
+	<window id="wdwCredenciales" border="normal" title="Ingrese con su usuario" width="400px" sclass="wdw" visible="false">
+			<toolbar height="10px" />
+			<div width="100%" align="center">
+				<h:table width="100%">
+					<h:tr>
+						<h:td align="right">
+							<label value="Usuario:" />
+						</h:td>
+						<h:td>
+							<textbox id="txtUsuario" onCreate="self.focus();" maxlength="50" />
+						</h:td>
+					</h:tr>
+					<h:tr>
+						<h:td align="right">
+							<label value="Contraseña:" />
+						</h:td>
+						<h:td>
+							<textbox id="txtPass" type="password" maxlength="50" />
+						</h:td>
+					</h:tr>
+					<h:tr>
+						<h:td align="right">
+							<toolbarbutton id="btnIniciar" label="Iniciar Sesión" sclass="btn-personalized" />
+						</h:td>
+						<h:td align="left">
+							<toolbarbutton id="btnRecordar" label="Olvidé Credenciales" sclass="btn-personalized" />
+						</h:td>
+					</h:tr>
+				</h:table>
+			</div>
+		</window>
+	</window>
+</zk>

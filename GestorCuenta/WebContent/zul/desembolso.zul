@@ -1,0 +1,65 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<style src="/css/comp.css" />
+	<window title="wdwFiltroInventario" border="none" width="100%" height="100%">
+		<toolbar>
+			<toolbarbutton id="btnNuevo" label="Agregar" sclass="btn-personalized" image="/img/icons/add.png" />
+			<toolbarbutton id="btnFiltro" label="Filtrar" sclass="btn-personalized" image="/img/icons/buscar.png" />
+			<toolbarbutton id="btnExportar" label="Exportar" sclass="btn-personalized" image="/img/icons/excel.png" />
+		</toolbar>
+<!-- 		<tabbox> -->
+<!-- 			<tabs> -->
+<!-- 				<tab id="tabEntrada" height="0px" /> -->
+<!-- 				<tab id="tabSalida" height="0px" /> -->
+<!-- 			</tabs> -->
+<!-- 			<tabpanels> -->
+<!-- 				<tabpanel> -->
+					<listbox id="lbxEntrada" width="100%" fixedLayout="true" hflex="min" vflex="min">
+						<listhead>
+							<listheader label="Correlativo" width="100px" />
+							<listheader label="No. Transacción"  />
+							<listheader label="Lote" width="150px" align="center" />
+							<listheader label="Desc Producto" width="100px" align="center" />
+							<listheader label="Precio Unitario" width="150px" align="right" />
+							<listheader label="Cantidad" width="200px" align="center" />
+							<listheader label="Monto Total" width="150px" align="right" />
+							<listheader label="Fecha" width="150px" align="center" />
+						</listhead>
+					</listbox>
+<!-- 				</tabpanel> -->
+<!-- 				<tabpanel> -->
+<!-- 					<listbox id="lbxSalida" width="100%" fixedLayout="true" hflex="min" vflex="min"> -->
+<!-- 						<listhead> -->
+<!-- 							<listheader label="Correlativo" width="100px" /> -->
+<!-- 							<listheader label="Cliente"  /> -->
+<!-- 							<listheader label="No. Factura" width="150px" align="center" /> -->
+<!-- 							<listheader label="Serie" width="100px" align="center" /> -->
+<!-- 							<listheader label="Fecha" width="200px" align="center" /> -->
+<!-- 							<listheader label="Monto Total" width="150px" align="right" /> -->
+<!-- 							<listheader label="Estado" width="150px" align="center" /> -->
+<!-- 						</listhead> -->
+<!-- 					</listbox> -->
+<!-- 				</tabpanel> -->
+<!-- 			</tabpanels> -->
+<!-- 		</tabbox> -->
+	</window>
+	
+	<window id="wdwDetalleInventario" border="normal" width="600px" visible="false">
+		<toolbar>
+			<toolbarbutton label="Regresar" sclass="btn-personalized" image="/img/icons/regresar_16.png" />
+		</toolbar>
+		<listbox id="lbxDetalleInventario" width="100%" fixedLayout="true" hflex="min" vflex="min">
+			<listhead>
+				<listheader label="No." width="100px" />
+				<listheader label="Producto"  />
+				<listheader label="Cantidad" width="150px" align="center" />
+				<listheader label="Subtotal" width="100px" align="right" />
+			</listhead>
+			<listfoot>
+				<listfooter>
+					
+				</listfooter>
+			</listfoot>
+		</listbox>
+	</window>
+</zk>

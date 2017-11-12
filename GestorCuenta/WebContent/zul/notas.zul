@@ -1,0 +1,46 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<style src="/css/comp.css" />
+	<window title="" border="none" id="wdwNotas" width="100%" height="100%" apply="com.umg.gt.gestorcuenta.controller.NotaCtrl">
+		<toolbar>
+			<toolbarbutton id="btnFiltro" label="Filtrar" sclass="btn-personalized" image="/img/icons/buscar.png" />
+			<toolbarbutton id="btnExportar" label="Exportar" sclass="btn-personalized" image="/img/icons/excel.png" visible="false" />
+			<toolbarbutton id="btnLimpiar" 	label="Actualizar"  image="/img/icons/refresh.png" sclass="btn-personalized" />
+		</toolbar>
+		<listbox id="lbxDocumento" vflex="true" fixedLayout="true" checkmark="true" width="100%">
+			<listhead>
+				<listheader label="" width="35px" />
+				<listheader label="Nombre de Cuenta" />
+				<listheader label="Número de Cuenta" />
+				<listheader label="Monto" />
+				<listheader label="Descripción" />
+				<listheader label="Tipo Documento" />
+				<listheader label="Fecha"  />
+			</listhead>
+		</listbox>
+	</window>
+	
+	<window id="wdwFiltro" border="normal" visible="false" width="350px">
+		<caption label="Búsqueda" />
+		<toolbar>
+			<toolbarbutton id="btnBuscar" label="Buscar" image="/img/icons/buscar.png" sclass="btn" />
+			<toolbarbutton id="btnRegresar" label="Regresar" image="/img/icons/regresar_16.png" sclass="btn" onClick="wdwFiltro.setVisible(false)" />
+		</toolbar>
+		<grid>
+			<columns>
+				<column width="30%" />
+				<column width="70%" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Tipo Documento:" />
+					<combobox id="cmbTipoDocumento" readonly="true" width="120px" />
+				</row>
+				<row>
+					<label value="Nombre Cliente:" />
+					<textbox id="txtNomCliente" maxlength="256" width="120px" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

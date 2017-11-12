@@ -1,0 +1,347 @@
+<?page title="Cuenta Corriente" contentType="text/html;charset=UTF-8"?>
+<zk>
+<style src="/css/comp.css" />
+	<window title="" border="none" width="100%" height="100%" id="wdwCuenta" apply="com.umg.gt.gestorcuenta.controller.CuentaCtrl">
+		<toolbar>
+			<toolbarbutton id="btnAgregar" 	label="Agregar"  image="/img/icons/add.png" 	 sclass="btn-personalized" />
+			<toolbarbutton id="btnFiltro" 	label="Buscar" 	 image="/img/icons/buscar.png" 	 sclass="btn-personalized" />
+			<toolbarbutton id="btnExportar" label="Exportar" image="/img/icons/excel.png" 	 sclass="btn-personalized" visible="false" />
+			<toolbarbutton id="btnLimpiar" 	label="Actualizar"  image="/img/icons/refresh.png" sclass="btn-personalized" />
+		</toolbar>
+		<listbox id="lbxCuenta" width="100%" vflex="true">
+			<listhead>
+				<listheader label="" width="35px" />
+				<listheader label="Nombre de la Cuenta" width="" />
+				<listheader label="Número de Cuenta" width="" />
+				<listheader label="Tipo de Cuenta" width="" />
+				<listheader label="Categoría" width="" />
+				<listheader label="Fecha Creado" width="" />
+			</listhead>
+		</listbox>
+		<menupopup id="popMenu">
+			<menuitem id="mniDesembolsos" label="Pagos de Cuenta" image="/img/icons/edit.png" />
+		</menupopup>
+	</window>
+	
+	<window id="wdwPagos" border="normal" visible="false" width="900px" height="500px">
+		<caption label="Desembolsos de la Cuenta" />
+		<toolbar>
+			<toolbarbutton id="btnPago" label="Realizar Pago" image="/img/icons/add.png" sclass="btn-personalized" />
+			<toolbarbutton id="btnRegresar" label="Regresar" image="/img/icons/regresar_16.png" sclass="btn-personalized" onClick="wdwPagos.setVisible(false)" />
+		</toolbar>
+		<listbox id="lbxDesembolso" vflex="true" width="100%">
+			<listhead>
+				<listheader label="" width="35px"/>
+				<listheader label="Descripción" />
+				<listheader label="Monto Pendiente" />
+				<listheader label="Monto Pagado" />
+				<listheader label="Cuotas Pendientes" />
+				<listheader label="Cuotas Pagadas" />
+				<listheader label="Fecha" />
+			</listhead>
+		</listbox>
+	</window>
+	
+	<window id="wdwPagar" border="normal" visible="false" width="350px">
+		<caption label="Realizar Pago" />
+		<toolbar>
+			<toolbarbutton id="btnAceptar" label="Pagar" image="/img/icons/checkmark.png" sclass="btn-personalized" />
+			<toolbarbutton id="btnRegresar" label="Regresar" image="/img/icons/regresar_16.png" sclass="btn-personalized" onClick="wdwPagar.setVisible(false)" />
+		</toolbar>
+		<grid>
+			<columns>
+				<column width="30%" />
+				<column width="70%" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Descripción:" />
+					<textbox id="txtDescripcion" maxlength="256" width="150px" />
+				</row>
+				<row>
+					<label value="Monto:" />
+					<decimalbox id="txtMonto" locale="US" maxlength="16" readonly="true" width="150px" />
+				</row>
+				<row>
+					<cell colspan="4">
+						<radiogroup id="rdMetodoPago" >
+							<radio id="chkEfectivo" label="Efectivo" value="Efectivo" />
+							<radio id="chkTarjeta" label="Tarjeta de Crédito" value="Tarjeta de Crédito" />
+						</radiogroup>
+<!-- 						<checkbox id="chkEfectivo" label="Efectivo" /> -->
+<!-- 						<checkbox id="chkTarjeta" label="Tarjeta de Crédito" /> -->
+					</cell>
+				</row>
+				<row>
+					<label value="Tarjeta de Crédito:" />
+					<combobox id="cmbTarjeta" readonly="true" width="150px" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+	
+	<window id="wdwInfo" border="normal" visible="false" width="600px">
+		<caption id="title" label="Información de la Cuenta" />
+		<toolbar>
+			<toolbarbutton id="btnRegresar" label="Regresar" image="/img/icons/regresar_16.png" sclass="btn" onClick="wdwInfo.setVisible(false)" />
+		</toolbar>
+		<tabbox>
+			<tabs>
+				<tab id="tabInfoCliente" 	label="Datos Generales" />
+				<tab id="tabInfoFinanciera" label="Datos Financieros" visible="false" />
+				<tab id="tabInfoCuenta"		label="Datos Cuenta" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<grid id="gridCliente" >
+						<columns>
+							<column width="20%" />
+							<column width="30%" />
+							<column width="20%" />
+							<column width="30%" />
+						</columns>
+						<rows>
+							<row>
+								<label value="Nombre Cliente:" />
+								<cell colspan="3">
+									<label id="lblNomCliente" />
+								</cell>
+							</row>
+							<row>
+								<label value="NIT:" />
+								<cell colspan="3">
+									<label id="lblNitCliente" />
+								</cell>
+							</row>
+						</rows>
+					</grid>
+				</tabpanel>
+				<tabpanel>
+					<grid id="gridFinanciero">
+						<columns>
+							<column width="20%" />
+							<column width="30%" />
+							<column width="20%" />
+							<column width="30%" />
+						</columns>
+						<rows>
+							<row>
+								<label value="Tarjeta Crédito:" />
+								<label id="lblTarjeta" />
+								<label value="Nombre" />
+								<label id="lblNombreTarjeta" />
+							</row>
+							<row>
+								<label value="CCV:" />
+								<label id="lblCcv" />
+								<label value="Fecha Vencimiento:" />
+								<label id="lblVencimiento" />
+							</row>
+							<row>
+								<label value="Ingresos Mensuales:" />
+								<label id="lblIngresoMes" />
+								<label value="" />
+								<label value="" />
+							</row>
+						</rows>
+					</grid>
+				</tabpanel>
+				<tabpanel>
+					<grid id="gridCuenta">
+						<columns>
+							<column width="20%" />
+							<column width="30%" />
+							<column width="20%" />
+							<column width="30%" />
+						</columns>
+						<rows>
+							<row>
+								<label value="Número de Cuenta:" />
+								<label id="lblCuenta" />
+								<label value="Tipo de Cuenta:" />
+								<label id="lblTipoCuenta" />
+							</row>
+							<row>
+								<label value="Categoría de Cuenta:" />
+								<label id="lblCategoría" />
+								<label value="Tasa Interés:" />
+								<label id="lblInteres" />
+							</row>
+							<row>
+								<label value="Monto Disponible:" />
+								<label id="lblDisponible" />
+								<label value="Día de Corte:" />
+								<label id="lblFecCorte" />
+							</row>
+							<row>
+								<label value="Día de Pago:" />
+								<label id="lblFecPago" />
+								<label value="" />
+								<label value="" />
+							</row>
+						</rows>
+					</grid>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</window>
+	
+	<window id="wdwFiltro" border="normal" visible="false" width="350px">
+		<caption label="Búsqueda" />
+		<toolbar>
+			<toolbarbutton id="btnBuscar" label="Buscar" image="/img/icons/buscar.png" sclass="btn-personalized" />
+			<toolbarbutton id="btnRegresar" label="Regresar" image="/img/icons/regresar_16.png" sclass="btn-personalized" onClick="wdwFiltro.setVisible(false)" />
+		</toolbar>
+		<grid>
+			<columns>
+				<column width="30%" />
+				<column width="70%" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Nombre Cliente:" />
+					<textbox id="txtNomCliente" maxlength="256" />
+				</row>
+				<row>
+					<label value="NIT:" />
+					<textbox id="txtNitCliente" maxlength="16" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+	
+	<window id="wdwAgregar" border="normal" visible="false" width="600px">
+		<caption id="title" label="Agregar Cuenta" />
+		<toolbar>
+			<toolbarbutton id="btnCrear" 	label="Crear Cuenta" image="/img/icons/checkmark.png" 	sclass="btn-personalized" />
+			<toolbarbutton id="btnRegresar" label="Regresar" 	 image="/img/icons/regresar_16.png" sclass="btn-personalized" onClick="wdwAgregar.setVisible(false)" />
+		</toolbar>
+		<label value="Seleccione Cliente..." /> <separator width="10px" orient="vertical" />
+		<bandbox id="bndCliente" width="400px" readonly="true" 
+				 style="border-style: solid; border-width: 2px; border-color: black;">
+			<bandpopup height="400px">
+				<listbox width="600px">
+					<listhead>
+						<listheader width="35px" />
+						<listheader width="80px" />
+						<listheader><textbox id="txtQuestNombre" maxlength="128" width="120px" /></listheader>
+						<listheader><textbox id="txtQuestNit" 	 maxlength="128" width="120px" /></listheader>
+					</listhead>
+				</listbox>
+				<listbox id="lbxCliente" width="600px" mold="paging" autopaging="true" vflex="true">
+					<listhead>
+						<listheader width="35px" />
+						<listheader label="Código" width="80px" />
+						<listheader label="Nombre Cliente" />
+						<listheader label="NIT" />
+					</listhead>
+				</listbox>
+			</bandpopup>
+		</bandbox>
+		<separator orient="vertical" height="10px" width="100%" />
+		<tabbox>
+			<tabs>
+				<tab id="tabInfoCliente" 	label="Datos Generales" />
+				<tab id="tabInfoFinanciera" label="Datos Financieros" />
+				<tab id="tabInfoCuenta"		label="Datos Cuenta" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<grid id="gridCliente" >
+						<columns>
+							<column width="20%" />
+							<column width="30%" />
+							<column width="20%" />
+							<column width="30%" />
+						</columns>
+						<rows>
+							<row>
+								<label value="Código Cliente:" />
+								<label value="XXXXXXXXXXX" id="lblCodCliente" />
+								<label value="Nombre Cliente:" />
+								<label value="XXXXXXXXXXX" id="lblNomCliente" />
+							</row>
+							<row>
+								<label value="NIT:" />
+								<label value="XXXXXXXXXXX" id="lblNitCliente" />
+								<label value="Dirección" />
+								<label value="XXXXXXXXXXX" id="lblDireccion" />
+							</row>
+						</rows>
+					</grid>
+				</tabpanel>
+				<tabpanel>
+					<grid id="gridFinanciero">
+						<columns>
+							<column width="20%" />
+							<column width="30%" />
+							<column width="20%" />
+							<column width="30%" />
+						</columns>
+						<rows>
+							<row>
+								<label value="Tarjeta Crédito:" />
+								<decimalbox id="decTarjeta" width="150px" />
+								<label value="Nombre" />
+								<textbox id="txtNombre" width="150px" />
+							</row>
+							<row>
+								<label value="CCV:" />
+								<decimalbox id="decCcv" locale="US" width="150px" />
+								<label value="Fecha Vencimiento:" />
+								<hbox>
+									<spinner id="spnMes" constraint="min 1 max 12: valores entre 1 y 12" width="50px"></spinner>
+									<spinner id="spnAnio" constraint="min 1990 max 3000: valores entre 1990 y 3000" width="70px"></spinner>
+								</hbox>
+							</row>
+							<row>
+								<label value="Ingresos Mensuales:" />
+								<decimalbox id="decIngresoMes" locale="US" width="150px" />
+								<cell colspan="2" align="center">
+									<toolbarbutton id="btnValidaTarjeta" label="Validar Tarjeta" image="/img/icons/checkmark.png" sclass="btn-personalized" />
+								</cell>
+							</row>
+						</rows>
+					</grid>
+				</tabpanel>
+				<tabpanel>
+					<grid id="gridCuenta">
+						<columns>
+							<column width="20%" />
+							<column width="30%" />
+							<column width="20%" />
+							<column width="30%" />
+						</columns>
+						<rows>
+							<row>
+								<label value="Número de Cuenta:" />
+								<label value="XXXXXXXXXXX" id="lblCuenta" />
+								<label value="Tipo de Cuenta:" />
+								<label value="XXXXXXXXXXX" id="lblTipoCuenta" />
+							</row>
+							<row>
+								<label value="Categoría de Cuenta:" />
+								<label value="XXXXXXXXXXX" id="lblCategoría" />
+								<label value="Tasa Interés:" />
+								<label value="XXXXXXXXXXX" id="lblInteres" />
+							</row>
+							<row>
+								<label value="Monto Disponible:" />
+								<label value="XXXXXXXXXXX" id="lblDisponible" />
+								<label value="Día de Corte:" />
+								<label value="XXXXXXXXXXX" id="lblFecCorte" />
+							</row>
+							<row>
+								<label value="Día de Pago:" />
+								<label value="XXXXXXXXXXX" id="lblFecPago" />
+								<label value="" />
+								<label value="" />
+							</row>
+						</rows>
+					</grid>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</window>
+
+</zk>

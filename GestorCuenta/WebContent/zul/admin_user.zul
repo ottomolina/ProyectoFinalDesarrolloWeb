@@ -1,0 +1,145 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<style src="../css/bootstrap.min.css" />
+<style src="/css/comp.css" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+
+	<window id="wdwAdminUsuario" border="none" width="100%" height="100%" apply="com.umg.gt.gestorcuenta.controller.UsuarioCtrl">
+		<borderlayout width="100%" height="100%">
+			<north>
+				<toolbar>
+					<toolbarbutton id="btnAgregarUsuario" label="Crear Usuario" image="/img/icons/add.png" sclass="btn" />
+					<toolbarbutton id="btnModificarUsuario" label="Modificar Usuario" image="/img/icons/edit.png" sclass="btn" />
+				</toolbar>
+			</north>
+			<center border="none">
+				<div vflex="true">
+					<listbox id="lbxSearch" width="100%" visible="false">
+						<listhead>
+							<listheader width="35px"/>
+							<listheader align="center"><textbox id="txtNombre" maxlength="128" width="120px" /></listheader>
+							<listheader align="center"><textbox id="txtApellido" maxlength="128" width="120px" /></listheader>
+							<listheader align="center"><textbox id="txtUsuario" maxlength="128" width="120px" /></listheader>
+							<listheader align="center"><textbox id="txtPerfil" maxlength="128" width="120px" /></listheader>
+							<listheader align="center"><textbox id="txtCorreo" maxlength="128" width="120px" /></listheader>
+							<listheader align="center"><decimalbox id="txtTelefono" maxlength="8" width="120px" /></listheader>
+							<listheader align="center"></listheader>
+						</listhead>
+					</listbox>
+					<listbox id="lbxUsuario" width="100%" vflex="true" checkmark="true" emptyMessage="Aun no ha creado usuarios para el sistema."
+								mold="paging" pageSize="15">
+						<listhead>
+							<listheader label="" width="35px">
+								<image id="imgBuscar" src="../img/icons/buscar.png" />
+							</listheader>
+							<listheader label="Nombres"    		align="left"/>
+							<listheader label="Apellidos"    	align="left"/>
+							<listheader label="Usuario"    		align="left"/>
+							<listheader label="Perfil"    		align="left"/>
+							<listheader label="Correo"			align="left"/>
+							<listheader label="Teléfono"		align="left"/>
+							<listheader label="Fecha Creación"  align="left"/>
+						</listhead>
+					</listbox>
+				</div>
+			</center>
+		</borderlayout>
+		
+		<menupopup id="popMenu">
+			<menuitem id="mniChangePass" label="Modificar Contraseña" image="/img/icons/reset_pass.png" />
+		</menupopup>
+		
+		<window id="wdwUsuario" width="625px" border="normal" visible="false">
+			<toolbar>
+				<toolbarbutton id="btnGuardarUsuario" label="Guardar" image="/img/icons/guardar.png" sclass="btn" />
+				<toolbarbutton id="btnRegresar" label="Regresar" image="/img/icons/regresar_16.png" sclass="btn" onClick="wdwUsuario.setVisible(false);" />
+			</toolbar>
+			<hbox>
+				<grid width="300px" style="border: 0.5px solid black; border-radius: 5px;">
+					<columns>
+						<column width="40%" />
+						<column width="60%" />
+					</columns>
+					<rows>
+						<row>
+							<label value="Primer Nombre" />
+							<textbox id="txtFirstName" maxlength="128" />
+						</row>
+						<row>
+							<label value="Segundo Nombre" />
+							<textbox id="txtSecondName" maxlength="128" />
+						</row>
+						<row>
+							<label value="Primer Apellido" />
+							<textbox id="txtLastName" maxlength="128" />
+						</row>
+						<row>
+							<label value="Segundo Apellido" />
+							<textbox id="txtLastName1" maxlength="128" />
+						</row>
+					</rows>
+				</grid>
+				<grid width="300px">
+					<columns>
+						<column width="40%" />
+						<column width="60%" />
+					</columns>
+					<rows>
+						<row>
+							<label value="Teléfono" />
+							<decimalbox id="decTelefono" maxlength="8" width="160px" />
+						</row>
+						<row>
+							<label value="Correo" />
+							<textbox id="txtCorreo" maxlength="128" />
+						</row>
+					</rows>
+				</grid>
+			</hbox>
+			<grid width="100%" style="border: 0.5px solid black; border-radius: 5px;">
+				<columns>
+					<column width="40%" />
+					<column width="60%" />
+				</columns>
+				<rows>
+					<row>
+						<label value="Usuario" />
+						<textbox id="txtUsuario" maxlength="128" />
+					</row>
+					<row>
+						<label value="Contraseña" />
+						<textbox id="txtPassword" maxlength="128" type="password" />
+					</row>
+					<row>
+						<label value="Perfil" />
+						<combobox id="cmbPerfil" readonly="true" />
+					</row>
+				</rows>
+			</grid>
+		</window>
+		
+		<window id="wdwCambioPass" width="300px" border="normal" visible="false" title="Cambio Contraseña">
+			<toolbar>
+				<toolbarbutton id="btnGuardarPass" label="Guardar" image="/img/icons/guardar.png" sclass="btn" />
+				<toolbarbutton id="btnRegresar" label="Regresar" image="/img/icons/regresar_16.png" sclass="btn" onClick="wdwCambioPass.setVisible(false);" />
+			</toolbar>
+			<grid width="100%" style="border: 0.5px solid black; border-radius: 5px;">
+				<columns>
+					<column width="40%" />
+					<column width="60%" />
+				</columns>
+				<rows>
+					<row>
+						<label value="Contraseña" />
+						<textbox id="txtPassword" maxlength="128" type="password" />
+					</row>
+					<row>
+						<label value="Confirme contraseña" />
+						<textbox id="txtConfirmPass" maxlength="128" type="password" />
+					</row>
+				</rows>
+			</grid>
+		</window>
+		
+	</window>
+</zk>

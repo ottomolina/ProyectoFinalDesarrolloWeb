@@ -1,0 +1,115 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<style src="../css/bootstrap.min.css" />
+<style src="/css/comp.css" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<window id="wdwSolicitud" border="none" width="100%" height="100%" apply="com.umg.gt.gestorcuenta.controller.SolicitudCtrl">
+		<toolbar>
+			<toolbarbutton id="btnNuevo" label="Agregar" sclass="btn" image="/img/icons/add.png" />
+			<toolbarbutton id="btnFiltro" label="Filtrar" sclass="btn" image="/img/icons/buscar.png" />
+			<toolbarbutton id="btnExportar" label="Exportar" sclass="btn" image="/img/icons/excel.png" />
+		</toolbar>
+		<listbox id="lbxSolicitud" width="100%" fixedLayout="true" hflex="min" vflex="min">
+			<listhead>
+				<listheader label="" width="35px" />
+				<listheader label="DPI" width="" />
+				<listheader label="NIT" width="" />
+				<listheader label="Ingreso Mensual" width="" />
+				<listheader label="Monto Solicitado" width="" />
+				<listheader label="Estado Solicitud" width="" />
+				<listheader label="Usuario" width="" />
+			</listhead>
+		</listbox>
+	</window>
+	
+	<window id="wdwFiltro" border="normal" width="500px" visible="false">
+		<toolbar>
+			<toolbarbutton label="Filtrar" sclass="btn" image="/img/icons/buscar.png" />
+			<toolbarbutton label="Regresar" sclass="btn" image="/img/icons/regresar_16.png" />
+		</toolbar>
+		<grid>
+			<columns>
+				<column width="40%" />
+				<column width="60%" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Cliente" />
+					<textbox id="txtCliente" maxlength="64" width="150px" />
+				</row>
+				<row>
+					<label value="Identificación" />
+					<textbox id="txtIdentificacion" width="150px" readonly="true" />
+				</row>
+				<row>
+					<label value="NIT" />
+					<textbox id="txtNit" width="150px" readonly="true" />
+				</row>
+				<row>
+					<label value="Estado" />
+					<combobox id="cmbEstado" width="150px" readonly="true" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+	
+	<window id="wdwManSolicitud" border="normal" width="600px" visible="false">
+		<toolbar>
+			<toolbarbutton label="Guardar" sclass="btn" image="/img/icons/guardar.png" />
+			<toolbarbutton label="Regresar" sclass="btn" image="/img/icons/regresar_16.png" />
+		</toolbar>
+		<grid>
+			<columns>
+				<column width="40%" />
+				<column width="60%" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Cliente" />
+					<bandbox id="bndCliente" readonly="true" width="150px">
+						<bandpopup width="500px" height="300px">
+							<div>
+								<listbox width="100%">
+									<listhead>
+										<listheader label="" width="35px" />
+										<listheader align="center">
+											<textbox id="txtCliente" maxlength="64" />
+										</listheader>
+										<listheader />
+									</listhead>
+								</listbox>
+								<listbox id="lbxCliente" width="100%" vflex="true" checkmark="true">
+									<listhead>
+										<listheader label="" width="35px" />
+										<listheader label="Nombre Cliente" width="" />
+										<listheader label="DPI" width="" />
+									</listhead>
+								</listbox>
+							</div>
+						</bandpopup>
+					</bandbox>
+				</row>
+				<row>
+					<label value="Identificación" />
+					<textbox id="txtIdentificacion" width="150px" readonly="true" />
+				</row>
+				<row>
+					<label value="NIT" />
+					<textbox id="txtNit" width="150px" readonly="true" />
+				</row>
+				<row>
+					<label value="Ingreso Mensual" />
+					<decimalbox id="decIngresoMes" maxlength="10" width="150px" />
+				</row>
+				<row>
+					<label value="Monto Solicitado" />
+					<decimalbox id="decMontoSolicitado" maxlength="10" width="150px" />
+				</row>
+				<row>
+					<label value="Estado" />
+					<combobox id="cmbEstado" width="150px" readonly="true" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

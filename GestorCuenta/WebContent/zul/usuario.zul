@@ -1,0 +1,99 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<style src="/css/comp.css" />
+	<window id="wdwUsuario" title="" border="none" width="100%" height="100%" apply="com.umg.gt.gestorcuenta.controller.UsuarioCtrl">
+		<borderlayout width="100%" height="100%">
+			<north size="40px">
+				<toolbar>
+					<toolbarbutton id="btnAgregar" label="Agregar" image="/img/icons/add.png" sclass="btn-personalized" />
+					<toolbarbutton id="btnFiltro" label="Filtrar" image="/img/icons/buscar.png" sclass="btn-personalized" />
+					<toolbarbutton id="btnExportar" label="Exportar" image="/img/icons/excel.png" sclass="btn-personalized" />
+					<toolbarbutton id="btnPassword" label="Cambiar Contraseña" image="/img/icons/reset_pass.png" sclass="btn-personalized" />
+				</toolbar>
+			</north>
+			<west title="Almacenes" width="400px" flex="true" collapsible="true">
+				<listbox id="lbxAlmacen" width="100%" vflex="1" checkmark="true" emptyMessage="Debe crear almacenes">
+					<listhead>
+						<listheader label="" width="35px"/>
+						<listheader label="" align="center" />
+					</listhead>
+				</listbox>
+			</west>
+			<center border="none">
+				<listbox id="lbxUsuario" width="100%" vflex="1" checkmark="true" emptyMessage="Seleccione un almacen para visualizar los usuarios asociados.">
+					<listhead>
+						<listheader label="" width="35px"/>
+						<listheader label="Usuario"    		align="center"/>
+						<listheader label="Nombre Usuario"  align="center"/>
+						<listheader label="Tipo"         	align="center"/>
+						<listheader label="Fecha Creación"  align="center"/>
+					</listhead>
+				</listbox>
+			</center>
+		</borderlayout>
+	</window>
+	
+	<window id="wdwConfUsuario" border="normal" width="400px" visible="false" sclass="wdw">
+		<toolbar>
+			<toolbarbutton id="btnGuardar" label="Guardar" sclass="btn-personalized" image="/img/icons/guardar.png" />
+			<toolbarbutton id="btnRegresar" label="Salir" sclass="btn-personalized" image="/img/icons/cierra.png" onClick="wdwConfUsuario.setVisible(false)" />
+		</toolbar>
+		<hbox width="100%" height="100%">
+			<grid>
+				<columns>
+					<column width="30%" />
+					<column width="70%" />
+				</columns>
+				<rows>
+					<row>
+						<label value="ALmacén" />
+						<textbox id="txtAlmacen" width="200px" maxlength="64" readonly="true" />
+					</row>
+					<row>
+						<label value="Nombre" />
+						<textbox id="txtNombre" width="200px" maxlength="64" />
+					</row>
+					<row>
+						<label value="Tipo Usuario" />
+						<combobox id="cmbTipUser" width="200px" readonly="true" />
+					</row>
+					<row>
+						<label value="Identificador" />
+						<textbox id="txtIdUser" width="200px" maxlength="64" />
+					</row>
+					<row>
+						<label value="Contraseña" />
+						<textbox id="txtPassUser" type="password" width="200px" maxlength="64" />
+					</row>
+					<row>
+						<label value="Fecha Alta" />
+						<datebox id="dtbFecha" width="200px" disabled="true" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+					</row>
+				</rows>
+			</grid>
+		</hbox>
+	</window>
+	
+	<window id="wdwChangePass" title="Cambiar Contraseña" border="normal" width="400px" visible="fasle" sclass="wdw">
+		<toolbar>
+			<toolbarbutton id="btnGuardar" label="Guardar" sclass="btn-personalized" image="/img/icons/guardar.png" />
+			<toolbarbutton id="btnRegresar" label="Salir" sclass="btn-personalized" image="/img/icons/cierra.png" onClick="wdwChangePass.setVisible(false)" />
+		</toolbar>
+		<grid>
+			<columns>
+				<column width="30%" />
+				<column width="70%" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Identificador" />
+					<textbox id="txtIdUser" width="200px" maxlength="64" disabled="true" />
+				</row>
+				<row>
+					<label value="Contraseña" />
+					<textbox id="txtPassUser" type="password" width="200px" maxlength="64" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

@@ -1,0 +1,137 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<style src="../css/bootstrap.min.css" />
+<style src="/css/comp.css" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+
+	<window title="" border="none" id="wdwPerfil" width="100%" height="100%" apply="com.umg.gt.gestorcuenta.controller.PerfilCtrl">
+		<borderlayout width="100%" height="100%">
+			<north>
+				<toolbar>
+					<toolbarbutton id="btnAgregarPerfil" label="Crear Perfil" image="/img/icons/add.png" sclass="btn" />
+					<toolbarbutton id="btnModificarPerfil" label="Modificar Perfil" image="/img/icons/edit.png" sclass="btn" />
+					<toolbarbutton id="btnEliminarPerfil" label="Eliminar Perfil" image="/img/icons/delete.png" sclass="btn" />
+				</toolbar>
+			</north>
+			<west width="400px" flex="true">
+				<div>
+				<listbox id="lbxPerfilBuscar" width="100%" visible="false">
+					<listhead>
+						<listheader label="" width="35px" />
+						<listheader align="center">
+							<textbox id="txtPerfil" maxlength="64" />
+						</listheader>
+					</listhead>
+				</listbox>
+				<listbox id="lbxPerfil" width="100%" vflex="true" checkmark="true" emptyMessage="Debe crear perfiles">
+					<listhead>
+						<listheader label="" width="35px">
+							<image id="imgBuscar" src="../img/icons/buscar.png" />
+						</listheader>
+						<listheader label="Perfil" align="center" />
+					</listhead>
+				</listbox>
+				</div>
+			</west>
+			<center border="none">
+				<listbox id="lbxPermiso" width="100%" vflex="true" checkmark="true" emptyMessage="Seleccione un perfil para visualizar los permisos asociados.">
+					<listhead>
+						<listheader label="" width="35px"/>
+						<listheader label="Permiso"    		align="center"/>
+						<listheader label="Componente"  	align="center"/>
+					</listhead>
+				</listbox>
+			</center>
+		</borderlayout>
+	
+	<window id="wdwPerfilMant" width="300px" visible="false" border="normal">
+		<toolbar>
+			<toolbarbutton id="btnGuardarPerfil" label="Guardar" image="/img/icons/guardar.png" sclass="btn" />
+			<toolbarbutton id="btnRegresar" label="Regresar" image="/img/icons/regresar_16.png" sclass="btn" onClick="wdwPerfilMant.setVisible(false);" />
+		</toolbar>
+		<separator orient="vertical" width="290px" height="2px"/>
+		<label value="Nombre Perfil: " />
+		<textbox id="txtNombrePerfil" maxlength="128" />
+		<separator orient="vertical" width="290px" height="2px"/>
+	</window>
+	
+	<window id="wdwConfPerfil" width="800px" height="500px" visible="false" border="normal">
+		<caption label="Configuración del Perfil" />
+		<borderlayout width="100%" height="100%">
+			<north>
+				<toolbar>
+					<toolbarbutton id="btnGuardar" label="Guardar" image="/img/icons/guardar.png" sclass="btn" />
+					<toolbarbutton id="btnRegresar" label="Regresar" image="/img/icons/regresar_16.png" sclass="btn" onClick="wdwConfPerfil.setVisible(false)" />
+				</toolbar>
+			</north>
+			<west width="350px" flex="true">
+				<div>
+				<listbox id="lbxPermisoBuscar" width="100%">
+					<listhead>
+						<listheader label="" width="35px" />
+						<listheader align="center">
+							<label value="Perfil" />
+							<textbox id="txtPerfil" maxlength="64" />
+						</listheader>
+					</listhead>
+				</listbox>
+				<listbox id="lbxPermisoNuevo" width="100%" vflex="true" checkmark="true" emptyMessage="Debe crear permisos">
+					<listhead>
+						<listheader label="" width="35px"/>
+						<listheader label="Permiso"    		align="center"/>
+						<listheader label="Componente"  	align="center"/>
+					</listhead>
+				</listbox>
+				</div>
+			</west>
+			<center border="none">
+				<hbox vflex="true">
+					<vbox width="40px" align="center" pack="center" vflex="true">
+						<toolbarbutton id="btnMoveRight" 	src="/img/icons/right_move_24.png" />
+						<toolbarbutton id="btnMoveLeft" 	src="/img/icons/left_move_24.png" />
+						<toolbarbutton id="btnMoveRightAll" src="/img/icons/right_move_all_24.png" />
+						<toolbarbutton id="btnMoveLeftAll" 	src="/img/icons/left_move_all_24.png" />
+					</vbox>
+				<listbox id="lbxPermisoAdded" width="100%" vflex="true" checkmark="true">
+					<listhead>
+						<listheader label="" width="35px"/>
+						<listheader label="Permiso"    		align="center"/>
+						<listheader label="Componente"  	align="center"/>
+					</listhead>
+				</listbox>
+				</hbox>
+			</center>
+			<south visible="true">
+				<div width="100%" align="center">
+					<toolbarbutton id="btnAddPermiso" label="Agregar Permiso" image="/img/icons/add.png" sclass="btn" />
+					<toolbarbutton id="btnModPermiso" label="Modificar Permiso" image="/img/icons/edit.png" sclass="btn" />
+					<toolbarbutton id="btnDelPermiso" label="Eliminar Permiso" image="/img/icons/delete.png" sclass="btn" />
+				</div>
+			</south>
+		</borderlayout>
+	</window>
+	
+	<window id="wdwPermiso" width="300px" visible="false" border="normal">
+		<toolbar>
+			<toolbarbutton id="btnGuardarPermiso" label="Guardar" src="/img/icons/guardar.png" sclass="btn" />
+			<toolbarbutton id="btnRegresar" label="Regresar" image="/img/icons/regresar_16.png" sclass="btn" onClick="wdwPermiso.setVisible(false)" />
+		</toolbar>
+		<tablelayout columns="2">
+			<tablechildren>
+				<label value="Permiso" />
+			</tablechildren>
+			<tablechildren>
+				<textbox id="txtPermiso" maxlength="64" />
+			</tablechildren>
+			<tablechildren>
+				<label value="Componente" />
+			</tablechildren>
+			<tablechildren>
+				<textbox id="txtComponente" maxlength="64" />
+			</tablechildren>
+		</tablelayout>
+	</window>
+	
+	</window>
+	
+</zk>

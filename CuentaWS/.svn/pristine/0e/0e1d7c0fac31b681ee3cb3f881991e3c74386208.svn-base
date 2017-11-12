@@ -1,0 +1,35 @@
+package com.umg.sistemacuentaws.orm;
+
+import java.math.BigDecimal;
+
+public class Documento {
+	private String nit;
+	private String num_facura;
+	private String descripcion;
+	private BigDecimal monto;
+	
+	public String getNit() {
+		return nit;
+	}
+	public void setNit(String nit) {
+		this.nit = nit;
+	}
+	public String getNum_facura() {
+		return num_facura;
+	}
+	public void setNum_facura(String num_facura) {
+		this.num_facura = num_facura;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public BigDecimal getMonto() {
+		return monto;
+	}
+	public void setMonto(BigDecimal monto) {
+		this.monto = monto;
+	}
+}

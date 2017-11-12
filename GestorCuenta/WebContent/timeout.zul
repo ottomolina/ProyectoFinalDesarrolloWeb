@@ -1,0 +1,31 @@
+<?page title="Finalizó Sesión" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="native">
+<window width="100%" height="100%" border="none">
+	<vlayout width="95%">
+		<image src="/img/fondos/load.gif" />
+		<div style="white-space: normal" width="88%" >
+			<label value="Ha terminado el tiempo de sesión, espere mientras se re-direcciona a la pagina de login para ingresar de nuevo." />
+		</div>
+		<hbox>
+			<label value="Tiempo de espera: " />
+			<label id="now" sclass="time" />
+            <label id="count" sclass="count" />
+			<timer id="timer" delay="1000" repeats="true">
+		        <attribute name="onTimer">
+				    if (countNum == 0) {
+				        timer.stop();
+				        return;
+				    }
+				    count.value = --countNum + "";
+				</attribute>
+		    </timer>
+		</hbox>
+	</vlayout>
+	<zscript>
+	    int countNum = 5;
+	</zscript>
+	<script type="text/javascript">
+		setTimeout("location.href = 'menu.zul';", 5000);
+	</script>
+</window>
+</zk>

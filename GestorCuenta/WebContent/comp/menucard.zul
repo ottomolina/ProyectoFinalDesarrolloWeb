@@ -1,0 +1,11 @@
+<panel title="${arg.title}" id="${arg.id}" class="panel-info" width="300px" height="115px">
+	<panelchildren>
+		<space height="5px" />
+		<hbox pack="center" align="right">
+			<space width="10px" />
+			<image src="${arg.image}" width="55px" height="55px" sclass="imgzoom" />
+			<space width="10px" />
+			<label value="${arg.description}" sclass="lblNoSelect" />
+		</hbox>
+	</panelchildren>
+</panel>

@@ -1,0 +1,110 @@
+<?page title="Gestor Cuenta Corriente" contentType="text/html;charset=UTF-8"?>
+<!-- <?link rel="shortcut icon" type="image/x-icon" href="/img/icons/logo-agenda.ico"?> -->
+<zk>
+<style src="css/menu.css" />
+	<window title="" border="none" width="100%" height="100%" id="wdwMenu" style="margin-top:1px" sclass="none"
+			apply="com.umg.gt.gestorcuenta.controller.MenuCtrl">
+		<borderlayout width="100%" height="100%">
+			<center border="none" style="background: url('img/mant/defaultdesktop.png'); background-size:100% 100%;">
+				<tabbox id="tabPrincipal" height="100%">
+					<tabs style="background: transparent; height:36px;">
+						<tab id="tabInicio" label="Inicio" style="height:36px; border:none; background: rgba(255, 255, 255, 0.5);" />
+					</tabs>
+					<tabpanels>
+						<tabpanel height="100%">
+							<div width="100%" height="100%" align="center" id="dvInicio">
+								<hbox height="100%" >
+									<vbox height="100%" pack="center">
+										<menucard title="Cuenta Corriente" id="mncAccount" image="/img/menu/cuenta.png">
+											<attribute name="description">
+												Desde esta opción puede visualizar la información de las cuentas corrientes.
+											</attribute>
+										</menucard>
+										<menucard title="Créditos" id="mncCreditos" image="/img/menu/almacen-icon.png" visible="false">
+											<attribute name="description">
+												Desde esta opción puede gestionar los créditos de una cuenta.
+											</attribute>
+										</menucard>
+										<menucard title="Mantenimientos" id="mncMant" image="/img/menu/user_icon.png" visible="false">
+											<attribute name="description">
+												Desde esta opción puede alimentar la información prioritaria del sistema.
+											</attribute>
+										</menucard>
+										<menucard title="Cerrar Sesión" id="mncSalir" image="/img/menu/shutdown-icon.png" visible="false">
+											<attribute name="description">
+												Cierra la sesión y sale del sistema.
+											</attribute>
+										</menucard>
+									</vbox>
+									<separator width="50px" height="100%" />
+									<vbox height="100%" pack="center">
+										<menucard title="Historial de Pagos" id="mncPago" image="/img/menu/pagos.png">
+											<attribute name="description">
+												Desde esta opción puede visualizar las notas de crédito y débito de las cuentas.
+											</attribute>
+										</menucard>
+										<menucard title="Reporte Cuentas" id="mncRepCuenta" image="/img/menu/product_icon.png" visible="">
+											<attribute name="description">
+												Desde esta opción puede administrar los reportes existentes en el sistema.
+											</attribute>
+										</menucard>
+<!-- 										<menucard title="Administración Usuarios" id="mncConfUserAdmin" image="/img/menu/configuration.png"> -->
+<!-- 											<attribute name="description"> -->
+<!-- 												Desde esta opción puede realizar la asignación de perfiles y permisos que tendrá cada usuario. -->
+<!-- 											</attribute> -->
+<!-- 										</menucard> -->
+<!-- 										<menucard title="Cerrar Sesión" id="mncSalir" image="/img/menu/shutdown-icon.png"> -->
+<!-- 											<attribute name="description"> -->
+<!-- 												Cierra la sesión y sale del sistema. -->
+<!-- 											</attribute> -->
+<!-- 										</menucard> -->
+									</vbox>
+								</hbox>
+							</div>
+							<div width="100%" height="100%" align="center" id="dvInvMenu" visible="false">
+								<button id="btnRegresarInv" label="Regresar al inicio" />
+								<separator height="50px" />
+								<hbox height="100%" pack="center">
+									<menucard title="Inventario de Entrada" id="mncInvIn" image="/img/menu/inv_in.png">
+										<attribute name="description">
+											Desde esta opción puede administrar el inventario de entrada de productos al almacén.
+										</attribute>
+									</menucard>
+									<separator width="50px" height="100%" />
+									<menucard title="Inventario de Salida" id="mncInvOut" image="/img/menu/inv_out.png">
+										<attribute name="description">
+											Desde esta opción puede administrar el inventario de salida de productos del almacén.
+										</attribute>
+									</menucard>
+								</hbox>
+							</div>
+							<div width="100%" height="100%" align="center" id="dvOrdMenu" visible="false">
+								<button id="btnRegresarOrd" label="Regresar al inicio" />
+								<separator height="50px" />
+								<hbox height="100%" pack="center">
+									<menucard title="Ordenes de Entrada" id="mncOrdIn" image="/img/menu/trans_in.png">
+										<attribute name="description">
+											Desde esta opción puede administrar las órdenes de entrada de productos al almacén.
+										</attribute>
+									</menucard>
+									<separator width="50px" height="100%" />
+									<menucard title="Ordenes de Salida" id="mncOrdOut" image="/img/menu/trans_out.png">
+										<attribute name="description">
+											Desde esta opción puede administrar las órdenes de salida de productos del almacén.
+										</attribute>
+									</menucard>
+								</hbox>
+							</div>
+						</tabpanel>
+					</tabpanels>
+					
+				</tabbox>
+				
+			</center>
+		</borderlayout>
+	</window>
+	<script>
+		<![CDATA[
+		]]>
+	</script>
+</zk>

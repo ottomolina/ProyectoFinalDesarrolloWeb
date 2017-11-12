@@ -1,0 +1,103 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+<style src="../css/bootstrap.min.css" />
+<style src="/css/comp.css" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<window title="" border="" width="100%" height="100%" id="wdwMan" apply="com.umg.gt.gestorcuenta.controller.ManCtrl">
+		<toolbar>
+			<toolbarbutton id="btnAgregar" 	label="Agregar"  image="/img/icons/add.png" 	 sclass="btn" />
+		</toolbar>
+		<tabbox id="tbxTodo" width="100%" vflex="true">
+			<tabs>
+				<tab id="tbTipoCuenta" label="Tipo Cuenta" />
+				<tab id="tbCategoria" 	label="Categorías" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<listbox id="lbxTipoCuenta" vflex="true" width="100%">
+						<listhead>
+							<listheader label="" width="35px"/>
+							<listheader label="Descripción" />
+							<listheader label="Tasa de Interés" />
+							<listheader label="Fecha de Corte" />
+							<listheader label="Fecha Límite" />
+						</listhead>
+					</listbox>
+				</tabpanel>
+				
+				<tabpanel>
+					<listbox id="lbxCategoria" vflex="true" width="100%">
+						<listhead>
+							<listheader label="" width="35px"/>
+							<listheader label="Descripción" />
+							<listheader label="Crédito Mínimo" />
+							<listheader label="Crédito Máximo" />
+						</listhead>
+					</listbox>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+		<menupopup id="popMenu">
+			<menuitem id="mniModificar" label="Modificar Registro" image="/img/icons/edit.png" />
+			<menuitem id="mniEliminar" label="Eliminar Registro" image="/img/icons/delete.png" />
+		</menupopup>
+	</window>
+	
+	<window id="wdwCategoria" border="normal" width="300px" visible="false">
+		<toolbar>
+			<toolbarbutton id="btnGuardar" 	label="Guardar" 	 image="/img/icons/guardar.png" 	sclass="btn" />
+			<toolbarbutton id="btnRegresar" label="Regresar" 	 image="/img/icons/regresar_16.png" sclass="btn" onClick="wdwCategoria.setVisible(false)" />
+		</toolbar>
+		<grid>
+			<columns>
+				<column width="40%" />
+				<column width="60%" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Nombre de Categoría" />
+					<textbox id="txtDescripcion" maxlength="256" width="150px" />
+				</row>
+				<row>
+					<label value="Crédito Mínimo" />
+					<decimalbox id="decCreditMin" maxlength="10" width="150px" />
+				</row>
+				<row>
+					<label value="Crédito Máximo" />
+					<decimalbox id="decCreditMax" maxlength="10" width="150px" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+	
+	<window id="wdwTipoCuenta" border="normal" width="300px" visible="false">
+		<toolbar>
+			<toolbarbutton id="btnGuardar" 	label="Guardar" 	 image="/img/icons/guardar.png" 	sclass="btn" />
+			<toolbarbutton id="btnRegresar" label="Regresar" 	 image="/img/icons/regresar_16.png" sclass="btn" onClick="wdwTipoCuenta.setVisible(false)" />
+		</toolbar>
+		<grid>
+			<columns>
+				<column width="40%" />
+				<column width="60%" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Tipo de Cuenta" />
+					<textbox id="txtTipoCuenta" maxlength="256" width="150px" />
+				</row>
+				<row>
+					<label value="Tasa de Interés Mensual" />
+					<decimalbox id="decInteres" maxlength="10" width="150px" />
+				</row>
+				<row>
+					<label value="Día de Corte" />
+					<combobox id="cmbDiaCorte" readonly="true" width="150px" />
+				</row>
+				<row>
+					<label value="Día Límite de Pago" />
+					<combobox id="cmbDiaLimite" readonly="true" width="150px" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

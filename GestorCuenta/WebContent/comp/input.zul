@@ -1,0 +1,6 @@
+
+<?component name="textbox" 	 extends="textbox"   width="150px" ?>
+<?component name="doublebox" extends="doublebox" width="150px" ?>
+<?component name="combobox"  extends="combobox"  width="150px" readonly="true" ?>
+<?component name="datebox"   extends="datebox"   width="150px" readonly="true" ?>
+<zk/> 
